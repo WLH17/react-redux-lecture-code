@@ -1,3 +1,5 @@
+//When subscribing a component to redux with react-redux, you need
+//to import connect and any actions that you need in the component.
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addAvenger} from '../redux/reducer';
@@ -42,6 +44,10 @@ class Avengers extends Component {
     }
 }
 
+//mapStateToProps is a function that lets you define what redux state
+//items you are wanting to subscribe to. If using multiple reducers,
+//You can access each reducer with dot notation.
+
 // const mapStateToProps = reduxState => reduxState;
 
 const mapStateToProps = reduxState => {
@@ -56,4 +62,7 @@ const mapStateToProps = reduxState => {
 //     addAvenger: addAvenger
 // }
 
+//connect needs to be passed mapStateToProps(always first), then 
+//actions second. If you don't need to subscribe to state items, but
+//do need to subscribe to actions, pass null as the first argument.
 export default connect(mapStateToProps, {addAvenger})(Avengers);
